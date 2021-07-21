@@ -13,7 +13,9 @@ gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 5.0'
 
 group :development, :test do
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'factory_bot_rails'
+  gem 'rspec-rails', '~> 5.0.0'
 end
 
 group :development do
@@ -23,4 +25,9 @@ group :development do
   gem 'web-console', '>= 4.1.0'
 end
 
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+group :test do
+  gem 'shoulda-matchers', '~> 5.0'
+  gem 'simplecov'
+end
+
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
