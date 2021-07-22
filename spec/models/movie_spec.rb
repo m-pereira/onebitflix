@@ -72,6 +72,44 @@ RSpec.describe Movie, type: :model do
         end
       end
     end
+
+    describe 'highlightable concern' do
+      context 'when same model' do
+        subject { build(:movie, :highlighted) }
+
+        let!(:old_highlighted) { create(:movie, :highlighted) }
+
+        it 'is invalid because only one can be highlighted' do
+          expect(subject.valid?).to be_falsy
+        end
+
+        it 'has the error message' do
+          subject.valid?
+
+          expect(subject.errors.full_messages).to include(
+            'Only one highlighted entity is permitted'
+          )
+        end
+      end
+
+      context 'when other model' do
+        subject { build(:movie, :highlighted) }
+
+        let!(:old_highlighted) { create(:serie, :highlighted) }
+
+        it 'is invalid because only one can be highlighted' do
+          expect(subject.valid?).to be_falsy
+        end
+
+        it 'has the error message' do
+          subject.valid?
+
+          expect(subject.errors.full_messages).to include(
+            'Only one highlighted entity is permitted'
+          )
+        end
+      end
+    end
   end
 
   describe 'associations' do

@@ -16,5 +16,9 @@ FactoryBot.define do
       category { nil }
       episode_number { 1 }
     end
+
+    trait :highlighted do
+      highlighted { true }
+    end
   end
 end

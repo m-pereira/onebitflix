@@ -6,5 +6,9 @@ FactoryBot.define do
     featured_thumbnail_key { FFaker::Bank.iban }
     thumbnail_cover_key { FFaker::Bank.iban }
     category
+
+    trait :highlighted do
+      highlighted { true }
+    end
   end
 end

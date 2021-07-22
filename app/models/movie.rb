@@ -1,4 +1,5 @@
 class Movie < ApplicationRecord
+  include Highlightable
   include PgSearch::Model
   multisearchable against: [:title], if: ->(record) { record.serie.nil? }
 

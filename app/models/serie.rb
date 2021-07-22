@@ -1,4 +1,5 @@
 class Serie < ApplicationRecord
+  include Highlightable
   include PgSearch::Model
   multisearchable against: [:title]
 

@@ -22,7 +22,9 @@ RSpec.describe Favorite, type: :model do
       it 'has the erro message' do
         subject.valid?
 
-        expect(subject.errors.full_messages).to include('User can favorite only one time per resource')
+        expect(subject.errors.full_messages).to include(
+          'User can favorite only one time per resource'
+        )
       end
     end
   end
