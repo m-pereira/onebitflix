@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
       resources :reviews, only: %i[index create]
       resources :searchs, path: 'search', only: :index
+      resources :series, only: :show
     end
   end
 end
