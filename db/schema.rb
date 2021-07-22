@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_22_021143) do
+ActiveRecord::Schema.define(version: 2021_07_22_021422) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "fuzzystrmatch"
@@ -93,7 +93,9 @@ ActiveRecord::Schema.define(version: 2021_07_22_021143) do
     t.boolean "highlighted", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "last_watched_episode_id"
     t.index ["category_id"], name: "index_series_on_category_id"
+    t.index ["last_watched_episode_id"], name: "index_series_on_last_watched_episode_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -121,4 +123,5 @@ ActiveRecord::Schema.define(version: 2021_07_22_021143) do
   add_foreign_key "players", "users"
   add_foreign_key "reviews", "users"
   add_foreign_key "series", "categories"
+  add_foreign_key "series", "movies", column: "last_watched_episode_id"
 end
