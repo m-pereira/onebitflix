@@ -73,7 +73,7 @@ RSpec.describe 'Api::V1::Favorites', type: :request do
       it 'has the error message' do
         subject
 
-        expect(json.dig(:errors)).to include('Favoritable must exist')
+        expect(json[:errors]).to include('Favoritable must exist')
       end
     end
   end

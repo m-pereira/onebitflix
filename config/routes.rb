@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :favorites, path: 'my_list', only: %i[index create]
       delete 'my_list/:type/:id', to: 'favorites#destroy', as: :favorite
+
+      resources :reviews, only: %i[index create]
     end
   end
 end
