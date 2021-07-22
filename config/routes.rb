@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       delete 'my_list/:type/:id', to: 'favorites#destroy', as: :favorite
 
       resources :reviews, only: %i[index create]
+      resources :searchs, path: 'search', only: :index
     end
   end
 end
