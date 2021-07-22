@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :review do
-    rating { 1 }
-    description { "MyText" }
+    rating { (1..5).to_a.sample }
+    description { FFaker::Book.description }
     reviewable { nil }
-    user { nil }
+    user
   end
 end
