@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_22_020815) do
+ActiveRecord::Schema.define(version: 2021_07_22_021143) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "fuzzystrmatch"
@@ -59,6 +59,18 @@ ActiveRecord::Schema.define(version: 2021_07_22_020815) do
     t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable"
   end
 
+  create_table "players", force: :cascade do |t|
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.time "elapsed_time"
+    t.bigint "movie_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["movie_id"], name: "index_players_on_movie_id"
+    t.index ["user_id"], name: "index_players_on_user_id"
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.integer "rating", null: false
     t.text "description"
@@ -105,6 +117,8 @@ ActiveRecord::Schema.define(version: 2021_07_22_020815) do
   add_foreign_key "favorites", "users"
   add_foreign_key "movies", "categories"
   add_foreign_key "movies", "series"
+  add_foreign_key "players", "movies"
+  add_foreign_key "players", "users"
   add_foreign_key "reviews", "users"
   add_foreign_key "series", "categories"
 end
