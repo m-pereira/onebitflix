@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :player do
-    start_date { '2021-07-21 23:11:43' }
-    end_date { '2021-07-21 23:11:43' }
-    elapsed_time { '2021-07-21 23:11:43' }
+    start_date { Time.current }
+    end_date { Time.current }
+    elapsed_time { Time.current }
     movie
     user
   end

@@ -19,6 +19,10 @@ module RequestHelpers
   def json(value = response.body)
     JSON.parse(value, symbolize_names: true)
   end
+
+  def time_formatter(time, format = :short)
+    I18n.l(time, format: format)
+  end
 end
 
 RSpec.configure do |config|
