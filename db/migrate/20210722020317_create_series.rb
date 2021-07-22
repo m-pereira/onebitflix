@@ -7,6 +7,7 @@ class CreateSeries < ActiveRecord::Migration[6.1]
       t.references :category, null: false, foreign_key: true
       t.string :featured_thumbnail_key
       t.string :thumbnail_cover_key
+      t.boolean :highlighted, default: false
 
       t.timestamps
     end
