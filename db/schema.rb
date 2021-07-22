@@ -40,8 +40,8 @@ ActiveRecord::Schema.define(version: 2021_07_22_021422) do
     t.string "video_key"
     t.integer "episode_number"
     t.string "featured_thumbnail_key"
-    t.bigint "serie_id", null: false
-    t.bigint "category_id", null: false
+    t.bigint "serie_id"
+    t.bigint "category_id"
     t.string "thumbnail_cover_key"
     t.boolean "highlighted", default: false
     t.datetime "created_at", precision: 6, null: false

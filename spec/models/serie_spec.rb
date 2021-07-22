@@ -11,7 +11,7 @@ RSpec.describe Serie, type: :model do
     it { is_expected.to belong_to(:category) }
     it { is_expected.to belong_to(:last_watched_episode).optional }
 
-    it { is_expected.to have_many(:reviews) }
-    it { is_expected.to have_many(:episodes) }
+    it { is_expected.to have_many(:reviews).dependent(:destroy) }
+    it { is_expected.to have_many(:episodes).dependent(:destroy) }
   end
 end

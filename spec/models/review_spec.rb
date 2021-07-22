@@ -14,9 +14,9 @@ RSpec.describe Review, type: :model do
     it { is_expected.to validate_length_of(:description).is_at_least(50) }
 
     describe 'uniqueness scoped by user' do
-      subject { new_revew.valid? }
+      subject { new_review.valid? }
 
-      let(:new_revew) { build(:review, reviewable: movie, user: user) }
+      let(:new_review) { build(:review, reviewable: movie, user: user) }
 
       let!(:movie) { create(:movie) }
       let!(:user) { create(:user) }
@@ -27,7 +27,7 @@ RSpec.describe Review, type: :model do
       it 'has the error message' do
         subject
 
-        expect(new_revew.errors.full_messages).to include(
+        expect(new_review.errors.full_messages).to include(
           'User can add only one review per resource'
         )
       end
