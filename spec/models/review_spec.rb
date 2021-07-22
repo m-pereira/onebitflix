@@ -27,7 +27,9 @@ RSpec.describe Review, type: :model do
       it 'has the error message' do
         subject
 
-        expect(new_revew.errors.full_messages).to include('User can add only one review per resource')
+        expect(new_revew.errors.full_messages).to include(
+          'User can add only one review per resource'
+        )
       end
     end
   end
