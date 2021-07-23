@@ -1,7 +1,7 @@
 class Serie < ApplicationRecord
   include Highlightable
   include PgSearch::Model
-  multisearchable against: [:title]
+  multisearchable against: %i[title description]
 
   belongs_to :category
   belongs_to :last_watched_episode, class_name: 'Movie', optional: true

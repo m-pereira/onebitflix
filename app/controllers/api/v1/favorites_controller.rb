@@ -1,4 +1,6 @@
 class Api::V1::FavoritesController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: %i[destroy create]
+
   def index
     @favorites = current_user.favorites
     render json: @favorites
@@ -19,6 +21,7 @@ class Api::V1::FavoritesController < ApplicationController
       favoritable_type: params[:type].capitalize,
       favoritable_id: params[:id]
     )
+
     @favorite.destroy
 
     head :ok
