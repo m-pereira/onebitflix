@@ -5,14 +5,14 @@ default: &default
 
 development:
   <<: *default
-  database: onebitflx_development
+  database: onebitflix_development
 
 test:
   <<: *default
-  database: onebitflx_test
+  database: onebitflix_test
 
 production:
   <<: *default
-  database: onebitflx_production
-  username: onebitflx
-  password: <%= ENV['ONEBITFLX_DATABASE_PASSWORD'] %>
+  database: onebitflix_production
+  username: onebitflix
+  password: <%= ENV['ONEBITFLIX_DATABASE_PASSWORD'] %>
