@@ -6,7 +6,7 @@ class Api::V1::DashboardsController < ApplicationController
 
     @result = LastSeenResourceFinder.call(params[:type], current_user)
 
-    render json: serialize_collection(@result)
+    render json: @result
   end
 
   private

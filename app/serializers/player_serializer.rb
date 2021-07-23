@@ -1,6 +1,9 @@
 class PlayerSerializer < ActiveModel::Serializer
-  attributes :id, :start_date, :end_date, :elapsed_time
+  attributes :id
 
-  belongs_to :user
+  attribute(:start_date) { I18n.l(object.start_date) if object.start_date }
+  attribute(:elapsed_time) { object.elapsed_time.strftime('%H:%M:%S') if object.elapsed_time }
+  attribute(:end_date) { I18n.l(object.end_date) if object.end_date }
+
   belongs_to :movie
 end

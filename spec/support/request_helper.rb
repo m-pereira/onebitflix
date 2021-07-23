@@ -20,7 +20,7 @@ module RequestHelpers
     JSON.parse(value, symbolize_names: true)
   end
 
-  def time_formatter(time, format = :short)
+  def time_formatter(time, format: :short)
     I18n.l(time, format: format)
   end
 end
@@ -28,4 +28,5 @@ end
 RSpec.configure do |config|
   config.include RequestHelpers, type: :request
   config.include RequestHelpers, type: :helper
+  config.include RequestHelpers, type: :service
 end
