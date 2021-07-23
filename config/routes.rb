@@ -5,8 +5,10 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      get '/dashboard', to: 'dashboards#index'
+
       resources :favorites, path: 'my_list', only: %i[index create]
-      delete 'my_list/:type/:id', to: 'favorites#destroy', as: :favorite
+      delete '/my_list/:type/:id', to: 'favorites#destroy', as: :favorite
 
       resources :reviews, only: %i[index create]
       resources :searchs, path: 'search', only: :index
