@@ -26,3 +26,4 @@ yarn-debug.log*
 
 config/database.yml
 coverage
+.env.yml
