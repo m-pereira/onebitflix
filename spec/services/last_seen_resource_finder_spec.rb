@@ -62,7 +62,21 @@ RSpec.describe LastSeenResourceFinder, type: :service do
                 thumbnail_cover_key: movie.thumbnail_cover_key,
                 thumbnail_key: movie.thumbnail_key,
                 title: movie.title,
-                video_key: movie.video_key
+                video_key: movie.video_key,
+                reviews_count: movie.reviews.count,
+                featured_thumbnail_url: AWS_BUCKET
+                  .object("thumbnails/#{movie.featured_thumbnail_key}")
+                  .presigned_url(:get, expires_in: 120),
+                thumbnail_url: AWS_BUCKET
+                  .object("thumbnails/#{movie.thumbnail_key}")
+                  .presigned_url(:get, expires_in: 120),
+                thumbnail_cover_url: AWS_BUCKET
+                  .object("thumbnails/#{movie.thumbnail_cover_key}")
+                  .presigned_url(:get, expires_in: 120),
+                type: 'movie',
+                video_url: AWS_BUCKET
+                  .object("videos/#{movie.video_key}")
+                  .presigned_url(:get, expires_in: 120)
               }
             }
           ]
@@ -88,8 +102,21 @@ RSpec.describe LastSeenResourceFinder, type: :service do
               episode_number: nil,
               featured_thumbnail_key: movie.featured_thumbnail_key,
               highlighted: true,
-              serie: nil,
+              reviews_count: movie.reviews.count,
               thumbnail_cover_key: movie.thumbnail_cover_key,
+              thumbnail_url: AWS_BUCKET
+                .object("thumbnails/#{movie.thumbnail_key}")
+                .presigned_url(:get, expires_in: 120),
+              thumbnail_cover_url: AWS_BUCKET
+                .object("thumbnails/#{movie.thumbnail_cover_key}")
+                .presigned_url(:get, expires_in: 120),
+              featured_thumbnail_url: AWS_BUCKET
+                .object("thumbnails/#{movie.featured_thumbnail_key}")
+                .presigned_url(:get, expires_in: 120),
+              type: 'movie',
+              video_url: AWS_BUCKET
+                  .object("videos/#{movie.video_key}")
+                  .presigned_url(:get, expires_in: 120),
               category: {
                 id: movie.category.id,
                 name: movie.category.name
